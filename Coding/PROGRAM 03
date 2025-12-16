@@ -1,0 +1,154 @@
+GovernmentExamRegistration.css
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+/* Background Image */
+.bg {
+height: 100vh;
+width: 100vw;
+background-image: url("https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?
+auto=format&fit=crop&w=1500&q=80");
+background-size: cover;
+background-position: center;
+display: flex;
+justify-content: center;
+align-items: center;
+font-family: Arial;
+}
+/* Form Card */
+.form-card {
+width: 380px;
+padding: 25px;
+background: rgba(255,255,255,0.9);
+border-radius: 12px;
+
+box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
+animation: fade 0.6s ease;
+}
+.form-card h2 {
+text-align: center;
+margin-bottom: 12px;
+color: #00308f;
+}
+/* Inputs */
+.form-card input,
+.form-card select {
+width: 100%;
+padding: 9px;
+margin: 6px 0;
+border: 1px solid #777;
+border-radius: 6px;
+font-size: 14px;
+}
+.form-card input:focus,
+.form-card select:focus {
+border-color: #00308f;
+outline: none;
+}
+/* Gender radio */
+.radio-box {
+display: flex;
+justify-content: space-between;
+margin: 5px 0 10px;
+font-size: 14px;
+}
+/* Button */
+.form-card button {
+width: 100%;
+padding: 11px;
+background: #00308f;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+font-size: 15px;
+}
+.form-card button:hover {
+background: #001f63;
+}
+
+/* Animation */
+@keyframes fade {
+from {
+opacity: 0;
+transform: translateY(20px);
+}
+to {
+opacity: 1;
+transform: translateY(0px);
+}
+}
+
+
+GovernmentExamRegistration.jsx
+
+import React from "react";
+import "./GovernmentExamRegistration.css";
+export default function GovernmentExamRegistration() {
+function handleSubmit(e) {
+e.preventDefault();
+alert("Application Submitted Successfully!");
+}
+return (
+<div className="bg">
+<form className="form-card" onSubmit={handleSubmit}>
+<h2>Government Exam Registration</h2>
+<input type="text" placeholder="Full Name" required />
+<input type="text" placeholder="Father's Name" required />
+{/* Gender Radio */}
+<div className="radio-box">
+<label>
+<input type="radio" name="gender" required /> Male
+</label>
+<label>
+<input type="radio" name="gender" required /> Female
+</label>
+<label>
+<input type="radio" name="gender" required /> Other
+</label>
+</div>
+<input type="number" placeholder="Aadhaar Number" required />
+<input type="email" placeholder="Email Address" required />
+<input type="number" placeholder="Mobile Number" required />
+{/* Photo Upload */}
+<input type="file" accept="image/*" required />
+{/* Address */}
+
+<input type="text" placeholder="House No / Street" required />
+<input type="text" placeholder="District" required />
+<input type="text" placeholder="State" required />
+<input type="number" placeholder="Pincode" required />
+{/* Exam Dropdown */}
+<select required>
+<option value="">Select Exam</option>
+<option>UPSC</option>
+<option>SSC</option>
+<option>RRB</option>
+<option>Bank PO</option>
+<option>Police Exam</option>
+</select>
+{/* Category */}
+<select required>
+<option value="">Select Category</option>
+<option>General</option>
+<option>OBC</option>
+<option>SC</option>
+<option>ST</option>
+<option>EWS</option>
+</select>
+<input type="date" required />
+<button type="submit">Submit Application</button>
+</form>
+</div>
+);
+}
+
+app.jsx
+
+import React from "react";
+import GovernmentExamRegistration from "./components/GovernmentExamRegistration";
+export default function App() {
+return <GovernmentExamRegistration />;
